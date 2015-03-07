@@ -30,7 +30,8 @@ gulp.task( 'css', function(){
 gulp.task( 'serve', function() {
 	browserSync({
 		server: {
-			baseDir: 'dist'
+			baseDir: 'styleguides/dist',
+			files: [ 'styleguides/dist/**/*.html', 'styleguides/dist/**/*.css' ]
 		}
 	});
 });
