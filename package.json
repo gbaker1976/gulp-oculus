@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/gbaker1976/oculus",
   "devDependencies": {
+    "browser-sync": "^2.2.2",
     "chalk": "^1.0.0",
     "kss": "^2.0.2"
   }

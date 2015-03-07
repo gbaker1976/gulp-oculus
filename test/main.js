@@ -10,6 +10,16 @@ section( 'Main app test', function( test ){
 	});
 
 	test( 'Instantiate the app with options', function( done ){
+		var oculus = new Oculus({
+			cssDirectory: './css',
+			outputDirectory: './styleguide',
+			server: {
+				port: 3002,
+				baseDir: './styleguide',
+				index: 'index.html'
+			}
+		});
+
 		done();
 	});
 
