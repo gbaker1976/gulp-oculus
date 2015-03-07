@@ -5,7 +5,8 @@
   "readme": "Readme.md",
   "main": "index.js",
   "scripts": {
-    "test": "node ./test/main.js"
+    "test": "node ./test/main.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,11 @@
   "devDependencies": {
     "browser-sync": "^2.2.2",
     "chalk": "^1.0.0",
-    "kss": "^2.0.2"
+    "gulp-cssnext": "^1.0.0",
+    "gulp-postcss": "^4.0.3",
+    "kss": "^2.0.2",
+    "postcss": "^4.0.6",
+    "postcss-nested": "^0.2.2",
+    "wrench": "^1.5.8"
   }
 }

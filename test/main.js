@@ -1,16 +1,16 @@
 var section = require( './tester' ).section;
 var assert = require( 'assert' );
-var Oculus = require( '../' );
+var oculus = require( '../' );
 
 section( 'Main app test', function( test ){
 
 	test( 'Instantiate the app without options', function( done ){
-		var oculus = new Oculus();
-		done( oculus instanceof Oculus );
+		var s = oculus();
+		done();
 	});
 
 	test( 'Instantiate the app with options', function( done ){
-		var oculus = new Oculus({
+		var s = oculus({
 			cssDirectory: './css',
 			outputDirectory: './styleguide',
 			server: {
