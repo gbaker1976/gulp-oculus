@@ -1,7 +1,7 @@
 var gulp = require( 'gulp' );
 var postcss = require( 'gulp-postcss' );
 var postcssNested = require( 'postcss-nested' );
-var kss = require( 'gulp-kss' );
+var kss = require( 'gulp-kss-styleguide' );
 var cssnext = require( 'gulp-cssnext' );
 var path = require( 'path' );
 var fs = require( 'fs' );
@@ -12,17 +12,22 @@ var reload = browserSync.reload;
 gulp.task(
 	'clean-dist',
 	function( cb ) {
-		wrench.rmdirSyncRecursive( 'styleguides/dist' );
-		fs.mkdir( 'styleguides/dist', cb );
+		fs.exists( 'styleguides/dist', function( exists ){
+			if ( exists ) {
+				wrench.rmdirSyncRecursive( 'styleguides/dist' );
+			}
+			fs.mkdir( 'styleguides/dist', cb );
+		});
 	}
 );
 
 gulp.task( 'styleguide', function(){
 	return gulp.src( 'styleguides/src/**/*.css' )
 		.pipe( kss({
-			templateDirectory: 'boilerplate/templates'
+			overview: __dirname + '/boilerplate/overview.md',
+			templateDirectory: __dirname + '/boilerplate/templates'
 		}))
-		.pipe( gulp.dest( 'styleguides/dist' ) );
+		.pipe( gulp.dest( __dirname + '/styleguides/dist' ) );
 });
 
 gulp.task( 'css', function(){

@@ -1,0 +1,29 @@
+/*
+Forms
+
+Reusable components that can be used across the site.
+So far this just includes buttons.
+
+Markup:
+<input type="text" class="{{modifier_class}}" value="Text input"/>
+
+Styleguide 1
+*/
+input {
+	margin:0;
+}
+[data-component-address] {
+	margin:0;
+}
+
+/*
+Forms2
+
+Reusable components that can be used across the site.
+So far this just includes buttons.
+
+Markup:
+<input type="text" class="{{modifier_class}}" value="Text input"/>
+
+Styleguide 1.1
+*/

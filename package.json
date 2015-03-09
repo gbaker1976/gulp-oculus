@@ -27,7 +27,6 @@
     "chalk": "^1.0.0",
     "gulp": "^3.8.11",
     "gulp-cssnext": "^1.0.0",
-    "gulp-kss": "0.0.2",
     "gulp-postcss": "^4.0.3",
     "kss": "^2.0.2",
     "postcss": "^4.0.6",
