@@ -1,7 +1,7 @@
 var gulp = require( 'gulp' );
 var postcss = require( 'gulp-postcss' );
 var postcssNested = require( 'postcss-nested' );
-var kss = require( 'gulp-kss-styleguide' );
+var kss = require( 'gulp-kss' );
 var cssnext = require( 'gulp-cssnext' );
 var path = require( 'path' );
 var fs = require( 'fs' );
@@ -20,8 +20,7 @@ gulp.task(
 gulp.task( 'styleguide', function(){
 	return gulp.src( 'styleguides/src/**/*.css' )
 		.pipe( kss({
-			template: 'boilerplate/templates/default.html',
-			css: 'boilerplate/grid.css'
+			templateDirectory: 'boilerplate/templates'
 		}))
 		.pipe( gulp.dest( 'styleguides/dist' ) );
 });
