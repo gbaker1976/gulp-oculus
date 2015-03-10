@@ -25,6 +25,7 @@
   "devDependencies": {
     "browser-sync": "^2.2.2",
     "chalk": "^1.0.0",
+    "csswring": "^3.0.2",
     "gulp": "^3.8.11",
     "gulp-cssnext": "^1.0.0",
     "gulp-postcss": "^4.0.3",

@@ -1,8 +1,4 @@
-/*
-Form Controls
-
-
-
-Styleguide 1
-*/
+@import "layout/_all";
+@import "typography/_all";
+@import "media/_all";
 @import "forms/_all";

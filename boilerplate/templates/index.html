@@ -1,84 +1,78 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<head>
-	<meta charset="utf-8">
-	<title>KSS: Living Styleguide</title>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Oculus: Living Styleguide</title>
 
-	<meta name="description" content="">
-	<meta name="generator" content="kss-node" />
-	<meta name="viewport" content="width=device-width">
+		<meta name="description" content="">
+		<meta name="generator" content="oculus;kss" />
+		<meta name="viewport" content="width=device-width">
 
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
-	<link rel="stylesheet" href="wasabi/css/_all.css">
-</head>
-<body>
-	<div id="kss-wrapper">
+		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Dosis">
+		<link rel="stylesheet" href="../css/oculus.css">
+		<link rel="stylesheet" href="wasabi/css/_all.css">
+	</head>
+	<body>
+		<div class="oculus-wrapper">
 
-	<div id="kss-nav">
-		<header id="kss-header">
-			<hgroup><h1>Oculus Styleguide</h1></hgroup>
-		</header>
-		<aside>
-			<nav><ul>
-				<li><a href="index.html">0.0: Overview</a></li>
-				{{#eachRoot}}
-				<li><a href="section-{{reference}}.html">{{reference}}.0: {{header}}</a></li>
-				{{/eachRoot}}
-			</ul></nav>
-		</aside>
-	</div>
-	<div role="main" id="kss-main">
-		<article id="kss-content">
-			{{#if overview}}
-			{{{overview}}}
-			{{else}}
+			<div role="navigation">
+				<header>
+					<hgroup><h1>Styleguide</h1></hgroup>
+				</header>
+				<aside>
+					<nav><ul>
+						{{#eachRoot}}
+						<li data-target="{{reference}}"><a href="#">{{reference}}.0: {{header}}</a></li>
+						{{/eachRoot}}
+					</ul></nav>
+				</aside>
+			</div>
+			<div role="main">
+				{{#sections}}
 
-			{{#eachSection rootNumber}}
-			{{#unlessDepth 1}}
-			<section class="kss-depth-{{ refDepth }}">
-				{{/unlessDepth}}
+					{{#childSections}}
+					<section data-reference="{{ depth }}" class="oculus-section">
 
-				<h1 class="kss-title"><span class="kss-ref">{{ reference }}{{#ifDepth 1}}.0{{/ifDepth}}</span> - {{ header }}</h1>
+						<h1 class="title"><span class="ref">{{ reference }}{{#ifDepth 1}}.0{{/ifDepth}}</span> - {{ header }}</h1>
 
-				{{#if description}}
-				<div class="kss-box">{{{description}}}</div>
-				{{/if}}
+						{{#if description}}
+						<div class="description">{{{description}}}</div>
+						{{/if}}
 
-				{{#if markup}}
-				<table class="kss-mod-list">
-					<tr class="kss-mod-desc-group">
-						<td class="kss-mod-desc"><p>Default styling</p></td>
-						<td class="kss-mod-name"></td>
-					</tr>
-					<tr class="kss-mod-example">
-						<td colspan="2">{{modifierMarkup}}</td>
-					</tr>
-					{{#eachModifier}}
-					<tr class="kss-mod-desc-group">
-						<td class="kss-mod-desc">{{{description}}}</td>
-						<td class="kss-mod-name"><p>{{name}}</p></td>
-					</tr>
-					<tr class="kss-mod-example">
-						<td colspan="2">{{modifierMarkup}}</td>
-					</tr>
-					{{/eachModifier}}
-				</table>
+						{{#if markup}}
+						<table class="mod-list" cellspacing="0">
+							<tr class="mod-desc-group">
+								<td class="mod-name"></td>
+								<td class="mod-desc"><p>Default styling</p></td>
+							</tr>
+							<tr class="mod-example">
+								<td colspan="2">{{{markup}}}</td>
+							</tr>
+							{{#modifiers}}
+							<tr class="mod-desc-group">
+								<td class="mod-name">{{name}}</td>
+								<td class="mod-desc">{{{description}}}</td>
+							</tr>
+							<tr class="mod-example">
+								<td colspan="2">{{{markup}}}</td>
+							</tr>
+							{{/modifiers}}
+						</table>
 
-				<div class="kss-markup">
-					<pre class="prettyprint lang-html">{{markup}}</pre>
-				</div>
-				{{/if}}
 
-				{{#unlessDepth 1}}
-			</section>
-			{{/unlessDepth}}
-			{{/eachSection}}
-			{{/if}}
-		</article>
-	</div>
+						<pre class="markup prettyprint lang-html">{{markup}}</pre>
 
-</div></body>
+						{{/if}}
+
+
+					</section>
+					{{/childSections}}
+
+				{{/sections}}
+			</div>
+
+		</div>
+
+		<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+	</body>
 </html>
