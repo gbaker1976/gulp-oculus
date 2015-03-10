@@ -22,18 +22,21 @@
 				<aside>
 					<nav><ul>
 						{{#eachRoot}}
-						<li data-target="{{reference}}"><a href="#">{{reference}}.0: {{header}}</a></li>
+						<li><a href="#section-{{reference}}">{{header}}</a></li>
 						{{/eachRoot}}
 					</ul></nav>
 				</aside>
 			</div>
 			<div role="main">
+				<div class="scroller">
 				{{#sections}}
 
-					{{#childSections}}
-					<section data-reference="{{ depth }}" class="oculus-section">
+					<h1 id="section-{{ reference }}">{{ header }}</h1>
 
-						<h1 class="title"><span class="ref">{{ reference }}{{#ifDepth 1}}.0{{/ifDepth}}</span> - {{ header }}</h1>
+					{{#childSections}}
+					<section class="oculus-section">
+
+						<h1 class="title">{{ header }}</h1>
 
 						{{#if description}}
 						<div class="description">{{{description}}}</div>
@@ -69,6 +72,7 @@
 					{{/childSections}}
 
 				{{/sections}}
+				</div>
 			</div>
 
 		</div>
