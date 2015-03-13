@@ -1,0 +1,27 @@
+/*
+First-level Headline
+
+A standard first-level headline. The most important headline for a section.
+You should use this within an <hgroup> tag.
+
+Markup:
+<h1>This is a first level headline.</h1>
+
+Styleguide 2.0.1
+*/
+:root {
+  --headingColor: #000;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight:700;
+  color:var(--headingColor);
+}
+
+label {
+  color:var(--headingColor);
+}
+
+legend {
+  color:var(--headingColor);
+}

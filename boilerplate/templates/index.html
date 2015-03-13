@@ -17,7 +17,7 @@
 
 			<div role="navigation">
 				<header>
-					<hgroup><h1>Styleguide</h1></hgroup>
+					<hgroup><h1 class="oculus-heading">Styleguide</h1></hgroup>
 				</header>
 				<aside>
 					<nav><ul>
@@ -31,12 +31,12 @@
 				<div class="scroller">
 				{{#sections}}
 
-					<h1 id="section-{{ reference }}">{{ header }}</h1>
+					<h1 class="oculus-heading" id="section-{{ reference }}">{{ header }}</h1>
 
 					{{#childSections}}
 					<section class="oculus-section">
 
-						<h1 class="oculus-title">{{ header }}</h1>
+						<h1 class="oculus-title oculus-heading">{{ header }}</h1>
 
 						{{#if description}}
 						<div class="description">{{{description}}}</div>
@@ -63,7 +63,7 @@
 						</table>
 
 
-						<pre class="markup prettyprint lang-html">{{markup}}</pre>
+						<pre class="oculus-markup prettyprint lang-html">{{markup}}</pre>
 
 						{{/if}}
 
