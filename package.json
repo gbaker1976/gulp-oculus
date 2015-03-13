@@ -26,12 +26,13 @@
     "browser-sync": "^2.2.2",
     "chalk": "^1.0.0",
     "csswring": "^3.0.2",
+    "del": "^1.1.1",
     "gulp": "^3.8.11",
     "gulp-cssnext": "^1.0.0",
     "gulp-postcss": "^4.0.3",
+    "gulp-rimraf": "^0.1.1",
     "kss": "^2.0.2",
     "postcss": "^4.0.6",
-    "postcss-nested": "^0.2.2",
-    "wrench": "^1.5.8"
+    "postcss-nested": "^0.2.2"
   }
 }

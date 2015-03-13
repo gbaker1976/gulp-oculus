@@ -4,60 +4,49 @@ var postcssNested = require( 'postcss-nested' );
 var csswring = require( 'csswring' );
 var kss = require( 'gulp-kss-styleguide' );
 var cssnext = require( 'gulp-cssnext' );
-var path = require( 'path' );
-var fs = require( 'fs' );
-var wrench = require( 'wrench' );
+var del = require( 'del' )
 var browserSync = require( 'browser-sync' );
-var reload = browserSync.reload;
 
-gulp.task(
-	'clean-dist',
-	function( cb ) {
-		fs.exists( __dirname + '/styleguides/dist', function( exists ){
-			if ( exists ) {
-				wrench.rmdirSyncRecursive( __dirname + '/styleguides/dist' );
-			}
-			fs.mkdir( __dirname + '/styleguides/dist', cb );
-		});
-	}
-);
+gulp.task( 'clean-dist', function( cb ) {
+	del( [
+		'styleguides/dist/css/**',
+		'styleguides/dist/index.html'
+	], cb );
+});
 
-gulp.task(
-	'copy-oculus-css',
-	function ( cb ) {
-		wrench.copyDirRecursive(
-			__dirname + '/boilerplate/css',
-			__dirname + '/styleguides/dist/css',
-			{ forceDelete: true },
-			cb
-		);
-	}
-);
+gulp.task( 'copy-oculus-css', function () {
+	return gulp.src( 'boilerplate/css/*' )
+		.pipe( cssnext() )
+		.pipe( postcss( [ postcssNested, csswring ] ) )
+		.pipe( gulp.dest( 'styleguides/dist/css' ) );
+});
 
 gulp.task( 'styleguide', function(){
-	return gulp.src( __dirname + '/styleguides/src/**/*.css' )
+	return gulp.src( 'styleguides/src/css/**/*.css' )
 		.pipe( kss({
-			template: __dirname + '/boilerplate/templates/index.html'
+			template: 'boilerplate/templates/index.html'
 		}))
-		.pipe( gulp.dest( __dirname + '/styleguides/dist' ) );
+		.pipe( gulp.dest( 'styleguides/dist' ) );
 });
 
 gulp.task( 'css', function(){
-	return gulp.src( __dirname + '/styleguides/src/*/css/_all.css' )
-		.pipe( cssnext({
-			compress: false
-		}))
+	return gulp.src( 'styleguides/src/css/_all.css' )
+		.pipe( cssnext() )
 		.pipe( postcss( [ postcssNested, csswring ] ) )
-		.pipe( gulp.dest( __dirname + '/styleguides/dist' ) );
+		.pipe( gulp.dest( 'styleguides/dist/css' ) );
 });
 
 gulp.task( 'serve', function() {
 	browserSync({
 		server: {
-			baseDir: __dirname + '/styleguides/dist',
-			files: [ __dirname + '/styleguides/dist/**/*.html', __dirname + '/styleguides/dist/**/*.css' ]
+			baseDir: 'styleguides/dist'
 		}
 	});
 });
 
-gulp.task( 'default', [ 'clean-dist', 'copy-oculus-css', 'styleguide', 'css', 'serve' ] );
+gulp.task( 'watch', function(){
+	gulp.watch( 'styleguides/src/css/**/*', [ 'styleguide', 'css' ] );
+	gulp.watch( 'styleguides/dist/**/*', browserSync.reload );
+});
+
+gulp.task( 'default', [ 'clean-dist', 'copy-oculus-css', 'styleguide', 'css', 'serve', 'watch' ] );
