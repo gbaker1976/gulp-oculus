@@ -33,47 +33,53 @@ body {
 	margin:1rem;
 }
 
-.oculus-wrapper .oculus-section .oculus-heading {
+.oculus-wrapper .oculus-section .oculus-section-heading {
+	color:#999;
+	font-size:small;
+	font-weight:normal;
+}
+
+.oculus-wrapper .oculus-section .oculus-section .oculus-heading {
 	color:#ccc;
 }
 
-.oculus-wrapper .oculus-section .oculus-title {
+.oculus-wrapper .oculus-section .oculus-section .oculus-title {
 	font-weight:400;
 }
 
-.oculus-wrapper .oculus-section .oculus-title .ref {
+.oculus-wrapper .oculus-section .oculus-section .oculus-title .ref {
 
 }
 
-.oculus-wrapper .oculus-section .description {
+.oculus-wrapper .oculus-section .oculus-section .description {
 
 }
 
-.oculus-wrapper .oculus-section .mod-list {
+.oculus-wrapper .oculus-section .oculus-section .mod-list {
 	width:50%;
 }
 
-.oculus-wrapper .oculus-section .mod-list .mod-desc-group {
+.oculus-wrapper .oculus-section .oculus-section .mod-list .mod-desc-group {
 	background:#eee;
 }
 
-.oculus-wrapper .oculus-section .mod-list .mod-desc-group .mod-desc {
+.oculus-wrapper .oculus-section .oculus-section .mod-list .mod-desc-group .mod-desc {
 
 }
 
-.oculus-wrapper .oculus-section .mod-list .mod-desc-group .mod-desc p {
+.oculus-wrapper .oculus-section .oculus-section .mod-list .mod-desc-group .mod-desc p {
 	margin:0;
 }
 
-.oculus-wrapper .oculus-section .mod-list .mod-desc-group .mod-name {
+.oculus-wrapper .oculus-section .oculus-section .mod-list .mod-desc-group .mod-name {
 	font-weight:bold;
 }
 
-.oculus-wrapper .oculus-section .mod-list .mod-example td {
+.oculus-wrapper .oculus-section .oculus-section .mod-list .mod-example td {
 	padding:1rem 0;
 }
 
-.oculus-wrapper .oculus-section .oculus-markup.prettyprint {
+.oculus-wrapper .oculus-section .oculus-section .oculus-markup.prettyprint {
 	padding:.5rem;
 	border-radius:5px;
 	border:solid 1px #ccc;

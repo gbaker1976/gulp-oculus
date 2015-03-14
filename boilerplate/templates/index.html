@@ -21,56 +21,66 @@
 				</header>
 				<aside>
 					<nav><ul>
-						{{#eachRoot}}
-						<li><a href="#section-{{reference}}">{{header}}</a></li>
-						{{/eachRoot}}
+						{{#isMaster}}
+							{{#eachRoot}}
+							<li><a href="#section-{{reference}}">{{header}}</a></li>
+							{{/eachRoot}}
+						{{/isMaster}}
+						{{^isMaster}}
+						<li><a href="index.html">Home</a></li>
+							{{#eachRoot}}
+							<li><a href="section-{{reference}}.html">{{header}}</a></li>
+							{{/eachRoot}}
+						{{/isMaster}}
 					</ul></nav>
 				</aside>
 			</div>
 			<div role="main">
 				<div class="scroller">
 				{{#sections}}
-
-					<h1 class="oculus-heading" id="section-{{ reference }}">{{ header }}</h1>
-
-					{{#childSections}}
 					<section class="oculus-section">
 
-						<h1 class="oculus-title oculus-heading">{{ header }}</h1>
+						<h1 class="oculus-section-heading" id="section-{{ reference }}">{{ header }} <a href="section-{{ reference }}.html">#</a></h1>
 
-						{{#if description}}
-						<div class="description">{{{description}}}</div>
-						{{/if}}
+						{{#childSections}}
+						<section class="oculus-section">
 
-						{{#if markup}}
-						<table class="mod-list" cellspacing="0">
-							<tr class="mod-desc-group">
-								<td class="mod-name"></td>
-								<td class="mod-desc"><p>Default styling</p></td>
-							</tr>
-							<tr class="mod-example">
-								<td colspan="2">{{{markup}}}</td>
-							</tr>
-							{{#modifiers}}
-							<tr class="mod-desc-group">
-								<td class="mod-name">{{name}}</td>
-								<td class="mod-desc">{{{description}}}</td>
-							</tr>
-							<tr class="mod-example">
-								<td colspan="2">{{{markup}}}</td>
-							</tr>
-							{{/modifiers}}
-						</table>
+							<h1 class="oculus-title oculus-heading">{{ header }}</h1>
+
+							{{#if description}}
+							<div class="description">{{{description}}}</div>
+							{{/if}}
+
+							{{#if markup}}
+							<table class="mod-list" cellspacing="0">
+								<tr class="mod-desc-group">
+									<td class="mod-name"></td>
+									<td class="mod-desc"><p>Default styling</p></td>
+								</tr>
+								<tr class="mod-example">
+									<td colspan="2">{{{markup}}}</td>
+								</tr>
+								{{#modifiers}}
+								<tr class="mod-desc-group">
+									<td class="mod-name">{{name}}</td>
+									<td class="mod-desc">{{{description}}}</td>
+								</tr>
+								<tr class="mod-example">
+									<td colspan="2">{{{markup}}}</td>
+								</tr>
+								{{/modifiers}}
+							</table>
 
 
-						<pre class="oculus-markup prettyprint lang-html">{{markup}}</pre>
+							<pre class="oculus-markup prettyprint lang-html">{{markup}}</pre>
 
-						{{/if}}
+							{{/if}}
 
 
-					</section>
-					{{/childSections}}
+						</section>
+						{{/childSections}}
 
+				</section>
 				{{/sections}}
 				</div>
 			</div>
