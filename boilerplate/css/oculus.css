@@ -60,7 +60,7 @@ body {
 }
 
 .oculus-wrapper .oculus-section .oculus-section .mod-list .mod-desc-group {
-	background:#eee;
+
 }
 
 .oculus-wrapper .oculus-section .oculus-section .mod-list .mod-desc-group .mod-desc {
@@ -79,8 +79,28 @@ body {
 	padding:1rem 0;
 }
 
-.oculus-wrapper .oculus-section .oculus-section .oculus-markup.prettyprint {
+.oculus-wrapper .oculus-section .oculus-section .oculus-markup-block {
+
+}
+
+.oculus-wrapper .oculus-section .oculus-section .oculus-markup-block .oculus-markup-trigger {
+	cursor:pointer;
+}
+
+.oculus-wrapper .oculus-section .oculus-section .oculus-markup-block .oculus-markup {
+	display:none;
+}
+
+.oculus-wrapper .oculus-section .oculus-section .oculus-markup-block .oculus-markup {
+	display:block;
+}
+
+.oculus-wrapper .oculus-section .oculus-section .oculus-markup-block .oculus-markup.prettyprint {
 	padding:.5rem;
 	border-radius:5px;
 	border:solid 1px #ccc;
+}
+
+.oculus-wrapper .oculus-section .oculus-section .oculus-markup-block .oculus-markup.prettyprint.hide {
+	display:none;
 }

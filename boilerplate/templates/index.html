@@ -54,11 +54,12 @@
 							{{#if markup}}
 							<table class="mod-list" cellspacing="0">
 								<tr class="mod-desc-group">
-									<td class="mod-name"></td>
-									<td class="mod-desc"><p>Default styling</p></td>
+									<td colspan="2" class="mod-name"><p>Default styling</p></td>
 								</tr>
 								<tr class="mod-example">
-									<td colspan="2">{{{markup}}}</td>
+									<td colspan="2">
+										{{{markup}}}
+									</td>
 								</tr>
 								{{#modifiers}}
 								<tr class="mod-desc-group">
@@ -66,14 +67,18 @@
 									<td class="mod-desc">{{{description}}}</td>
 								</tr>
 								<tr class="mod-example">
-									<td colspan="2">{{{markup}}}</td>
+									<td colspan="2">
+										{{{markup}}}
+									</td>
 								</tr>
 								{{/modifiers}}
 							</table>
 
 
-							<pre class="oculus-markup prettyprint lang-html">{{markup}}</pre>
-
+							<div class="oculus-markup-block">
+								<a href="#" data-trigger="show" data-target="#markup-{{ id }}" class="oculus-markup-trigger">show/hide markup</a>
+								<pre id="markup-{{ id }}" class="oculus-markup prettyprint lang-html hide">{{markup}}</pre>
+							</div>
 							{{/if}}
 
 
@@ -86,6 +91,57 @@
 			</div>
 
 		</div>
+
+		<script>
+
+			var handleTrigger = function( e ){
+				var trigger = this.getAttribute( 'data-trigger' );
+				var triggerTarget;
+				var classes;
+				var idx;
+
+				if ( trigger ) {
+					triggerTarget = document.querySelector( this.getAttribute( 'data-target' ) );
+					if ( triggerTarget ) {
+						e.preventDefault && e.preventDefault();
+						e.stopPropagation && e.stopPropagation();
+						classes = triggerTarget.getAttribute( 'class' );
+						idx = classes.indexOf( 'hide' );
+						if ( idx > -1 ) {
+							classes = classes.slice( 0, idx ) + classes.slice( idx, classes.length - (idx+1) );
+						} else {
+							classes += ' hide';
+						}
+						triggerTarget.setAttribute( 'class', classes.trim() );
+					}
+				}
+			};
+
+			var Dispatcher = function(){
+				this._map = {};
+			};
+
+			Dispatcher.prototype.handleEvent = function( e ){
+				this._map[ e.type ].forEach(function( evt ){
+					if ( e.target.webkitMatchesSelector( evt.selector ) ) {
+						evt.handler.call( e.target, e );
+					}
+				});
+			};
+
+			Dispatcher.prototype.register = function( event, selector, handler ){
+				if ( !this._map[ event ] ) {
+					this._map[ event ] = [];
+				}
+				this._map[ event ].push({
+					selector: selector,
+					handler: handler
+				});
+				document.body.addEventListener( event, this );
+			};
+
+			new Dispatcher().register( 'click', '[data-trigger]', handleTrigger );
+		</script>
 
 		<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 	</body>

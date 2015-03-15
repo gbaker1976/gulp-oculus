@@ -45,8 +45,8 @@ gulp.task( 'serve', function() {
 });
 
 gulp.task( 'watch', function(){
-	gulp.watch( 'styleguides/src/css/**/*', [ 'styleguide', 'css' ] );
-	gulp.watch( [ 'boilerplate/**/*', 'styleguides/dist/**/*' ], browserSync.reload );
+	gulp.watch( [ 'boilerplate/**/*', 'styleguides/src/css/**/*' ], [ 'styleguide', 'css' ] );
+	gulp.watch( [ 'styleguides/dist/**/*' ], browserSync.reload );
 });
 
 gulp.task( 'default', [ 'clean-dist', 'copy-oculus-css', 'styleguide', 'css', 'serve', 'watch' ] );
