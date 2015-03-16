@@ -40,12 +40,12 @@
 				{{#sections}}
 					<section class="oculus-section">
 
-						<h1 class="oculus-section-heading" id="section-{{ reference }}">{{ header }} <a href="section-{{ reference }}.html">#</a></h1>
+						<h1 class="oculus-section-heading" id="section-{{ reference }}">{{ header }} <a class="oculus-section-permalink" href="section-{{ reference }}.html">#</a></h1>
 
 						{{#childSections}}
 						<section class="oculus-section">
 
-							<h1 class="oculus-title oculus-heading">{{ header }}</h1>
+							<h1 class="oculus-title oculus-section-heading">{{ header }}</h1>
 
 							{{#if description}}
 							<div class="description">{{{description}}}</div>
@@ -53,9 +53,9 @@
 
 							{{#if markup}}
 							<table class="mod-list" cellspacing="0">
-								<tr class="mod-desc-group">
+								<!-- <tr class="mod-desc-group">
 									<td colspan="2" class="mod-name"><p>Default styling</p></td>
-								</tr>
+								</tr> -->
 								<tr class="mod-example">
 									<td colspan="2">
 										{{{markup}}}

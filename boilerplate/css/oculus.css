@@ -37,10 +37,24 @@ body {
 	color:#999;
 	font-size:small;
 	font-weight:normal;
+	border:solid 1px #ccc;
+	padding:1em;
 }
 
-.oculus-wrapper .oculus-section .oculus-section .oculus-heading {
+.oculus-wrapper .oculus-section .oculus-section-heading .oculus-section-permalink {
 	color:#ccc;
+	text-decoration:none;
+}
+
+.oculus-wrapper .oculus-section .oculus-section-heading .oculus-section-permalink:hover {
+	color:#666;
+	text-decoration:underline;
+}
+
+.oculus-wrapper .oculus-section .oculus-section .oculus-section-heading {
+	margin:0;
+	padding:0;
+	border:none;
 }
 
 .oculus-wrapper .oculus-section .oculus-section .oculus-title {
@@ -51,8 +65,10 @@ body {
 
 }
 
-.oculus-wrapper .oculus-section .oculus-section .description {
-
+.oculus-wrapper .oculus-section .oculus-section .description,
+.oculus-wrapper .oculus-section .oculus-section .description * {
+	overflow:hidden;
+	margin:0;
 }
 
 .oculus-wrapper .oculus-section .oculus-section .mod-list {
