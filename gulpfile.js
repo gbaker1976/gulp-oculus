@@ -16,22 +16,31 @@ gulp.task( 'clean-dist', function( cb ) {
 
 gulp.task( 'copy-oculus-css', function () {
 	return gulp.src( 'boilerplate/css/*' )
-		.pipe( cssnext() )
+		.pipe( cssnext( { url: false } ) )
 		.pipe( postcss( [ postcssNested, csswring ] ) )
 		.pipe( gulp.dest( 'styleguides/dist/css' ) );
+});
+
+gulp.task( 'copy-images', function () {
+	return gulp.src( 'boilerplate/images/**/*' )
+		.pipe( gulp.dest( 'styleguides/dist/images' ) );
 });
 
 gulp.task( 'styleguide', function(){
 	return gulp.src( 'styleguides/src/css/**/*.css' )
 		.pipe( kss({
-			template: 'boilerplate/templates/index.html'
+			templates: {
+				main: 'boilerplate/templates/index.html',
+				section: 'boilerplate/templates/section.html',
+				subsection: 'boilerplate/templates/subsection.html'
+			}
 		}))
 		.pipe( gulp.dest( 'styleguides/dist' ) );
 });
 
 gulp.task( 'css', function(){
 	return gulp.src( 'styleguides/src/css/_all.css' )
-		.pipe( cssnext() )
+		.pipe( cssnext( { url: false } ) )
 		.pipe( postcss( [ postcssNested, csswring ] ) )
 		.pipe( gulp.dest( 'styleguides/dist/css' ) );
 });
@@ -49,4 +58,4 @@ gulp.task( 'watch', function(){
 	gulp.watch( [ 'styleguides/dist/**/*' ], browserSync.reload );
 });
 
-gulp.task( 'default', [ 'clean-dist', 'copy-oculus-css', 'styleguide', 'css', 'serve', 'watch' ] );
+gulp.task( 'default', [ 'clean-dist', 'copy-images', 'copy-oculus-css', 'styleguide', 'css', 'serve', 'watch' ] );

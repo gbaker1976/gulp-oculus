@@ -1,10 +1,70 @@
 /*
-Image
+Hero block
 
-A basic image.
+A full width billboard image.
 
 Markup:
-<img src="" alt="An image." />
+<div class="hero"></div>
 
 Styleguide 3.0.1
 */
+.hero {
+  display:block;
+  width:100%;
+  min-height:400px;
+  background: 0% 0%/cover url("../images/pacnoroad.jpg");
+}
+
+/*
+Media block
+
+A basic image with caption.
+
+Markup:
+<div class="media">
+  <img src="images/pacnoroad-thumbnail.jpg" alt="An image." />
+  <span class="caption">caption.</span>
+</div>
+
+Styleguide 3.0.3
+*/
+.media {
+
+  max-width:300px;
+
+  img {
+    width:100%;
+    height:auto;
+    display:block;
+  }
+
+  .caption {
+    display:block;
+  }
+
+/*
+Inline Media Block
+
+A basic inline image with caption.
+
+Markup:
+<div class="media inline">
+  <img src="images/pacnoroad-thumbnail.jpg" alt="An image." />
+  <span class="caption">caption.</span>
+</div>
+
+Styleguide 3.0.4
+*/
+  &.inline {
+    max-width:none;
+
+    img {
+      width:auto;
+      display:inline;
+    }
+
+    .caption {
+      display:inline;
+    }
+  }
+}
