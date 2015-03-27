@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Oculus: Living Styleguide</title>
+
+		<meta name="description" content="">
+		<meta name="generator" content="oculus;kss" />
+		<meta name="viewport" content="width=device-width">
+
+		<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/oculus.css">
+		<link rel="stylesheet" href="css/_all.css">
+	</head>
+	<body>
+		<div class="oculus-wrapper">
+
+			<div role="navigation">
+				<aside>
+					<nav><ul>
+
+						<li><a href="index.html">Go Back Home</a></li>
+
+					</ul></nav>
+				</aside>
+			</div>
+			<div role="main">
+				<div class="scroller">
+
+						<section class="oculus-section">
+
+							<h1 class="oculus-title oculus-section-heading">{{ header }}</h1>
+
+							{{#if description}}
+							<div class="description">{{{description}}}</div>
+							{{/if}}
+
+							{{#if markup}}
+
+								{{{markup}}}
+
+								{{#modifiers}}
+								<table class="mod-list" cellspacing="0">
+									<tr class="mod-desc-group">
+										<td class="mod-name">{{name}}</td>
+										<td class="mod-desc">{{{description}}}</td>
+									</tr>
+									<tr class="mod-example">
+										<td colspan="2">
+											{{{markup}}}
+										</td>
+									</tr>
+								</table>
+								{{/modifiers}}
+
+							<div class="oculus-markup-block">
+								<a href="#" data-trigger="show" data-target="#markup-{{ id }}" class="oculus-markup-trigger">show/hide markup</a>
+								<pre id="markup-{{ id }}" class="oculus-markup prettyprint lang-html hide">{{markup}}</pre>
+							</div>
+							{{/if}}
+
+
+						</section>
+
+				</div>
+			</div>
+
+		</div>
+
+		<script>
+
+			var handleTrigger = function( e ){
+				var trigger = this.getAttribute( 'data-trigger' );
+				var triggerTarget;
+				var classes;
+				var idx;
+
+				if ( trigger ) {
+					triggerTarget = document.querySelector( this.getAttribute( 'data-target' ) );
+					if ( triggerTarget ) {
+						e.preventDefault && e.preventDefault();
+						e.stopPropagation && e.stopPropagation();
+						classes = triggerTarget.getAttribute( 'class' );
+						idx = classes.indexOf( 'hide' );
+						if ( idx > -1 ) {
+							classes = classes.slice( 0, idx ) + classes.slice( idx, classes.length - (idx+1) );
+						} else {
+							classes += ' hide';
+						}
+						triggerTarget.setAttribute( 'class', classes.trim() );
+					}
+				}
+			};
+
+			var Dispatcher = function(){
+				this._map = {};
+			};
+
+			Dispatcher.prototype.handleEvent = function( e ){
+				this._map[ e.type ].forEach(function( evt ){
+					if ( e.target.webkitMatchesSelector( evt.selector ) ) {
+						evt.handler.call( e.target, e );
+					}
+				});
+			};
+
+			Dispatcher.prototype.register = function( event, selector, handler ){
+				if ( !this._map[ event ] ) {
+					this._map[ event ] = [];
+				}
+				this._map[ event ].push({
+					selector: selector,
+					handler: handler
+				});
+				document.body.addEventListener( event, this );
+			};
+
+			new Dispatcher().register( 'click', '[data-trigger]', handleTrigger );
+		</script>
+
+		<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+	</body>
+</html>
