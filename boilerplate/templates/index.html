@@ -40,12 +40,12 @@
 				{{#sections}}
 					<section class="oculus-section">
 
-						<h1 class="oculus-section-heading" id="section-{{ reference }}">{{ header }} <a class="oculus-section-permalink" href="section-{{ reference }}.html">#</a></h1>
+						<h1 class="oculus-section-heading" id="section-{{ reference }}">{{ header }} <a class="oculus-section-permalink" href="{{ url }}">#</a></h1>
 
 						{{#childSections}}
 						<section class="oculus-section">
 
-							<h1 class="oculus-title oculus-section-heading">{{ header }}</h1>
+							<h1 class="oculus-title oculus-section-heading">{{ header }} <a class="oculus-section-permalink" href="{{ url }}">#</a></h1>
 
 							{{#if description}}
 							<div class="description">{{{description}}}</div>
